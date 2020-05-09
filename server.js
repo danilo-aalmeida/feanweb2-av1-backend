@@ -9,11 +9,16 @@ db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
-var corsOptions = {
-  origin: "https://localhost:8081"
-};
-
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+//   //console.log("Acessou o Middleware!");
+  var corsOptions = {
+    origin: "https://localhost:8081"
+  };
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+  next();
+  app.use(cors(corsOptions));
+});
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
