@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "172.17.0.2",
+    HOST: "localhost",
     USER: "root",
     PASSWORD: "r1234",
     DB: "feanwebII_av1",
